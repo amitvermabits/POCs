@@ -10,24 +10,24 @@ import java.util.Scanner;
 class Node
 {
     protected int data;
-    protected Node link;
+    protected Node next;
  
     /*  Constructor  */
     public Node()
     {
-        link = null;
+        next = null;
         data = 0;
     }    
     /*  Constructor  */
     public Node(int d,Node n)
     {
         data = d;
-        link = n;
+        next = n;
     }    
     /*  Function to set link to next Node  */
-    public void setLink(Node n)
+    public void setNext(Node n)
     {
-        link = n;
+        next = n;
     }    
     /*  Function to set data to current Node  */
     public void setData(int d)
@@ -35,9 +35,9 @@ class Node
         data = d;
     }    
     /*  Function to get link to next node  */
-    public Node getLink()
+    public Node getNext()
     {
-        return link;
+        return next;
     }    
     /*  Function to get data from current Node  */
     public int getData()
@@ -82,7 +82,7 @@ class linkedList
         }
         else 
         {
-            nptr.setLink(start);
+            nptr.setNext(start);
             start = nptr;
         }
     }
@@ -98,7 +98,7 @@ class linkedList
         }
         else 
         {
-            end.setLink(nptr);
+            end.setNext(nptr);
             end = nptr;
         }
     }
@@ -112,12 +112,12 @@ class linkedList
         {
             if (i == pos) 
             {
-                Node tmp = ptr.getLink() ;
-                ptr.setLink(nptr);
-                nptr.setLink(tmp);
+                Node tmp = ptr.getNext() ;
+                ptr.setNext(nptr);
+                nptr.setNext(tmp);
                 break;
             }
-            ptr = ptr.getLink();
+            ptr = ptr.getNext();
         }
         size++ ;
     }
@@ -126,7 +126,7 @@ class linkedList
     {        
         if (pos == 1) 
         {
-            start = start.getLink();
+            start = start.getNext();
             size--; 
             return ;
         }
@@ -137,10 +137,10 @@ class linkedList
             while (s != end)
             {
                 t = s;
-                s = s.getLink();
+                s = s.getNext();
             }
             end = t;
-            end.setLink(null);
+            end.setNext(null);
             size --;
             return;
         }
@@ -150,12 +150,12 @@ class linkedList
         {
             if (i == pos) 
             {
-                Node tmp = ptr.getLink();
-                tmp = tmp.getLink();
-                ptr.setLink(tmp);
+                Node tmp = ptr.getNext();
+                tmp = tmp.getNext();
+                ptr.setNext(tmp);
                 break;
             }
-            ptr = ptr.getLink();
+            ptr = ptr.getNext();
         }
         size-- ;
     }    
@@ -168,18 +168,18 @@ class linkedList
             System.out.print("empty\n");
             return;
         }    
-        if (start.getLink() == null) 
+        if (start.getNext() == null) 
         {
             System.out.println(start.getData() );
             return;
         }
         Node ptr = start;
         System.out.print(start.getData()+ "->");
-        ptr = start.getLink();
-        while (ptr.getLink() != null)
+        ptr = start.getNext();
+        while (ptr.getNext() != null)
         {
             System.out.print(ptr.getData()+ "->");
-            ptr = ptr.getLink();
+            ptr = ptr.getNext();
         }
         System.out.print(ptr.getData()+ "\n");
     }
