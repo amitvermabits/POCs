@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.linkedlist;
 
 /*
  *  Java Program to Implement Singly Linked List
